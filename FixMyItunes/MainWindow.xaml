@@ -9,7 +9,7 @@
     <Grid Margin="0,0,0,-4">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="174" FontSize="32"><Run Text="FixMy"/><Run Text="i"/><Run Text="T"/><Run Text="unes"/></TextBlock>
         <Border Margin="109,133,131,164">
-            <Grid x:Name="Border" Margin="-6,0,-17,-24">
+            <Grid x:Name="bOver" Margin="-6,13,-17,-37">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -21,8 +21,16 @@
 
             </Grid>
         </Border>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="45" Margin="109,71,0,0" TextWrapping="Wrap" Text="Select a Starting Directory to begin looking through your music library." VerticalAlignment="Top" Width="277" TextAlignment="Center"/>
-        <Button x:Name="btnStart" Content="Begin" HorizontalAlignment="Center" Margin="0,228,0,70" VerticalAlignment="Center" Width="75" Visibility="Hidden"/>
+        <TextBox x:Name="txtHelp1" HorizontalAlignment="Left" Height="45" Margin="109,71,0,0" TextWrapping="Wrap" Text="Select a Starting Directory to begin looking through your music library." VerticalAlignment="Top" Width="277" TextAlignment="Center"/>
+        <Button x:Name="btnStart" Content="Begin" HorizontalAlignment="Center" Margin="0,228,0,70" VerticalAlignment="Center" Width="75" Visibility="Hidden" Click="btnStart_Click"/>
+        <ListView x:Name="lvMain" HorizontalAlignment="Left" Height="214" VerticalAlignment="Top" Width="332" Margin="82,71,0,0" Visibility="Collapsed">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
 
     </Grid>
 </Window>

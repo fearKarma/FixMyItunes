@@ -17,24 +17,74 @@
             get { return albumName; }
             set { albumName = value; }
         }
+        private string trackTitle;
 
-        //constructor for Base List
-        public Album(string artist, string album)
+        public string TrackTitle
         {
-            this.Artist = artist;
-            this.AlbumName = album;
+            get { return trackTitle; }
+            set { trackTitle = value; }
         }
 
-        //public Album(string artist, string album, string title, string sortArtist, string sortAlbum, string year, int discNumber)
-        //{
-        //    this.Artist = artist;
-        //    this.SortAlbum = sortAlbum;
-        //    this.SortArtist = sortArtist;
-        //    this.TrackTitle = trackTitle;
-        //    this.Year = year;
-        //    this.AlbumName = albumName;
-        //    this.DiscNumber = discNumber;
-        //}
+        private string sortArtist;
+
+        public string SortArtist
+        {
+            get { return sortArtist; }
+            set { sortArtist = value; }
+        }
+
+        private string sortAlbum;
+
+        public string SortAlbum
+        {
+            get { return sortAlbum; }
+            set { sortAlbum = value; }
+        }
+
+        private string year;
+
+        public string Year
+        {
+            get { return year; }
+            set { year = value; }
+        }
+
+        private int discNumber;
+
+        public int DiscNumber
+        {
+            get { return discNumber; }
+            set { discNumber = value; }
+        }
+
+        private string path;
+
+        public string Path
+        {
+            get { return path; }
+            set { path = value; }
+        }
+
+        //constructor for Base List
+
+        public Album(string artist, string path)
+        {
+            this.Artist = artist;
+            this.Path = path;
+        }
+
+        
+
+        public Album(string artist, string album, string title, string sortArtist, string sortAlbum, string year, int discNumber)
+        {
+            this.Artist = artist;
+            this.SortAlbum = sortAlbum;
+            this.SortArtist = sortArtist;
+            this.TrackTitle = trackTitle;
+            this.Year = year;
+            this.AlbumName = albumName;
+            this.DiscNumber = discNumber;
+        }
 
 
     }

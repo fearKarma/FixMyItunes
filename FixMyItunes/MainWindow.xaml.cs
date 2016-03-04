@@ -22,9 +22,13 @@ namespace FixMyItunes
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal Dictionary<string, string> listMain = new Dictionary<string, string>();
+        internal List<Album> listDetailed = new List<Album>();
+
         public MainWindow()
         {
             InitializeComponent();
+            
             
         }
 
@@ -40,11 +44,48 @@ namespace FixMyItunes
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            txtFilePath.Visibility = Visibility.Collapsed;
+            btnBrowse.Visibility = Visibility.Collapsed;
+            txtHelp1.Visibility = Visibility.Collapsed;
+
+            lvMain.Visibility = Visibility.Visible;
+
+            buildList(listMain);
+        }
+
+        private void buildList(Dictionary<string,string> d)
+        {
+           
+                foreach (string e in d.Values)
+                {
+                    lvMain.Items.Add(new Album(e,System.IO.Path.GetFullPath(e)));
+                }
             
         }
 
-        private void RecursiveFileBuild (List<Album> list)
+        private void InitialList(string fp)
         {
+            string p = fp;
+            string[] l = Directory.GetFiles(fp);
+
+            foreach (string f in l)
+            {
+                addToList(f, false);
+            }
+        }
+
+        private void addToList(string item, bool type)
+        {
+            listMain = new Dictionary<string, string>();
+            listDetailed = new List<Album>();
+
+            if (!type) {
+                listMain.Add(item, System.IO.Path.GetFullPath(item));
+            }
+            else {
+                //Album a = new Album();
+                //listDetailed.Add(item);
+             }
 
         }
     }
