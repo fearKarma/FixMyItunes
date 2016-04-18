@@ -6,8 +6,21 @@
         xmlns:local="clr-namespace:FixMyItunes"
         mc:Ignorable="d"
         Title="Start" Height="300" Width="300">
-    <Grid>
-        <TreeView x:Name="tvMain" HorizontalAlignment="Center" Height="165" Margin="0" VerticalAlignment="Center" Width="165"/>
-
-    </Grid>
-</Window>
+        <Grid>
+            <ListView Margin="10" Name="lvUsers">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Column>
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock> 
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Column>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Window>

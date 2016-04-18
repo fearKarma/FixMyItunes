@@ -22,14 +22,16 @@ namespace FixMyItunes
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal Dictionary<string, string> listMain = new Dictionary<string, string>();
-        internal List<Album> listDetailed = new List<Album>();
+        List<string> primaryDataSource = new List<string>();
+
 
         public MainWindow()
         {
             InitializeComponent();
-            
-            
+
+           
+            lvMain.ItemsSource = primaryDataSource;
+
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
@@ -40,6 +42,11 @@ namespace FixMyItunes
 
             txtFilePath.Text = fbd.SelectedPath;
             this.btnStart.Visibility = Visibility.Visible;
+
+            foreach (string s in Directory.GetDirectories(txtFilePath.Text))
+            {
+                primaryDataSource.Add(s);
+            }
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -49,45 +56,9 @@ namespace FixMyItunes
             txtHelp1.Visibility = Visibility.Collapsed;
 
             lvMain.Visibility = Visibility.Visible;
-
-            buildList(listMain);
-        }
-
-        private void buildList(Dictionary<string,string> d)
-        {
-           
-                foreach (string e in d.Values)
-                {
-                    lvMain.Items.Add(new Album(e,System.IO.Path.GetFullPath(e)));
-                }
             
         }
 
-        private void InitialList(string fp)
-        {
-            string p = fp;
-            string[] l = Directory.GetFiles(fp);
-
-            foreach (string f in l)
-            {
-                addToList(f, false);
-            }
-        }
-
-        private void addToList(string item, bool type)
-        {
-            listMain = new Dictionary<string, string>();
-            listDetailed = new List<Album>();
-
-            if (!type) {
-                listMain.Add(item, System.IO.Path.GetFullPath(item));
-            }
-            else {
-                //Album a = new Album();
-                //listDetailed.Add(item);
-             }
-
-        }
     }
 
    
